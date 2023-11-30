@@ -15,8 +15,14 @@
         <div class="card h-100">
           <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="Movie Poster" style="height: 200px; object-fit: cover; width: 100%;">
           <div class="card-body">
+          <div class="d-flex justify-content-between">
             <h5 class="card-title"><%= bookmark.movie.title %></h5>
+            <div class="d-flex justify-content-end">
+            <i class="fa-regular fa-star"></i><p class="card-text"><%= bookmark.movie.rating %></p>
+            </div>
+            </div>
             <p class="card-text"><%= bookmark.movie.overview %></p>
+
           </div>
           <div class="card-footer">
           <div class="d-flex justify-content-between">

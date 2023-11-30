@@ -1,11 +1,35 @@
-<h2><%= @list.name %></h2>
-<p><strong>My List</strong></p>
-<p><% @list.bookmarks.each do |bookmark| %>
-<%= bookmark.movie.title %>
-  <img src="<%= bookmark.movie.poster_url %>" alt="Movie Poster" style="width: 150px; height: auto;">
-  <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-<% end %>
-</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 text-center">
+      <h2><%= @list.name %></h2>
+      <p class="lead"><strong>My List</strong></p>
+    </div>
+  </div>
 
-<%= link_to "Back list", lists_path %>
-<%= link_to "Add bookmark", new_list_bookmark_path(@list) %>
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="Movie Poster" style="height: 200px; object-fit: cover; width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title"><%= bookmark.movie.title %></h5>
+            <p class="card-text"><%= bookmark.movie.overview %></p>
+          </div>
+          <div class="card-footer">
+          <div class="d-flex justify-content-between">
+            <p class="card-text"><%= bookmark.comment %></p>
+            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6 offset-md-3 text-center">
+      <%= link_to "Back to Lists", lists_path, class: "btn btn-secondary btn-lg" %>
+      <%= link_to "Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+</div>

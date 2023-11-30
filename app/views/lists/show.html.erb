@@ -1,15 +1,18 @@
 <div class="container mt-5">
   <div class="row">
+   <div class="jumbotron text-center" style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%=@list.image_url%>')">
     <div class="col-md-6 offset-md-3 text-center">
       <h2><%= @list.name %></h2>
-      <p class="lead"><strong>My List</strong></p>
+      </div>
     </div>
   </div>
 
-  <div class="row">
+
+
+  <div class="row mt-4">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card h-100">
           <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="Movie Poster" style="height: 200px; object-fit: cover; width: 100%;">
           <div class="card-body">
             <h5 class="card-title"><%= bookmark.movie.title %></h5>

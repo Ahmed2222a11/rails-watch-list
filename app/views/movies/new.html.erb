@@ -1,0 +1,18 @@
+<h1>Add movie</h1>
+<%= form_with model: @movie do |t| %>
+   <%= t.label :title %>
+  <%= t.text_field :title %>
+    <%= t.label :poster_url %>
+  <%= t.text_field :poster_url %>
+  <%= t.label :overview %>
+  <%= t.text_field :overview %>
+  <%= t.submit %>
+<% end %>
+<%= form_with model: @movie do |t| %>
+  <!-- Autres champs du formulaire -->
+
+  <%= t.label :list_id %>
+  <%= t.collection_select :list_id, List.all, :id, :name, prompt: "Select a list" %>
+
+  <%= t.submit %>
+<% end %>
